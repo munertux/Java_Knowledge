@@ -10,7 +10,8 @@ Funcionalidades del codigo:
 + Venta de vehiculos y generacion de contrato en formato .pdf
 + Interfaz amigable:
   + Interfaz de inicio de sesion:
-    ![Uploading image.png…]()
+    ![image](https://github.com/user-attachments/assets/31062a23-860d-4814-8fcf-161b60d95535)
+
 
   + 
 
