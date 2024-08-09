@@ -4,7 +4,6 @@
  */
 package Operaciones;
 
-
 import Operaciones.*;
 import Paneles.Inventario.*;
 import Concesionario.Main;
@@ -30,8 +29,9 @@ public class Gestion_inv extends javax.swing.JPanel {
      */
     static DefaultTableModel modelo;
 
-    static List<Inventario> ListaInventario = new ArrayList<Inventario>();
-
+    public static List<Inventario> ListaInventario = new ArrayList<Inventario>();
+    public static int indice;
+    
     public Gestion_inv() {
         initComponents();
         inicializar();
@@ -46,10 +46,10 @@ public class Gestion_inv extends javax.swing.JPanel {
         modelo.setRowCount(0);
         BarraBusqueda.setText("");
         //System.out.println(ListaInventario.get(0).getMarca() +" "+ListaInventario.get(0).getModelo()+" "+ListaInventario.get(0).getAbs()+" "+ListaInventario.get(0).getAireA()+" "+ListaInventario.get(0).getCilindraje()+" "+ListaInventario.get(0).getCombustible()+" "+ListaInventario.get(0).getDireccion()+" "+ListaInventario.get(0).getEspEle()+" "+ListaInventario.get(0).getF_fabricacion()+" "+ListaInventario.get(0).getImagen()+" "+ListaInventario.get(0).getKilometraje()+" "+ListaInventario.get(0).getPantTac()+" "+ListaInventario.get(0).getPlaca()+" "+ListaInventario.get(0).getPrecio()+" "+ListaInventario.get(0).getSensor()+" "+ListaInventario.get(0).getTransmision()+" "+ListaInventario.get(0).getVelmax()+" "+ListaInventario.get(0).getVidriosEl());
-        int contador=0;
+        int contador = 0;
         for (Inventario item : ListaInventario) {
+
             Object[] rowData = {
-                             
                 item.getMarca(),
                 item.getModelo(),
                 item.getF_fabricacion(),
@@ -57,19 +57,21 @@ public class Gestion_inv extends javax.swing.JPanel {
                 item.getPlaca(),
                 item.getPrecio(),
                 item.getKilometraje(),
+                item.getStatus(),
                 contador
-                
+
             };
             modelo.addRow(rowData);
             contador++;
         }
-
+        busqueda();
     }
-public void busqueda(){
+
+    public static void busqueda() {
         Busqueda.indices.clear();
         modelo.setRowCount(0);
-        
-        List<Inventario> resultado =Busqueda.filtrar(ListaInventario, Filtro_jp.getSelectedItem().toString(), BarraBusqueda.getText()) ;        
+
+        List<Inventario> resultado = Busqueda.filtrar(ListaInventario, Filtro_jp.getSelectedItem().toString(), BarraBusqueda.getText(), Filtro_Vendidos.isSelected());
         System.out.println(resultado.size());
 
         //System.out.println(ListaInventario.get(0).getMarca() +" "+ListaInventario.get(0).getModelo()+" "+ListaInventario.get(0).getAbs()+" "+ListaInventario.get(0).getAireA()+" "+ListaInventario.get(0).getCilindraje()+" "+ListaInventario.get(0).getCombustible()+" "+ListaInventario.get(0).getDireccion()+" "+ListaInventario.get(0).getEspEle()+" "+ListaInventario.get(0).getF_fabricacion()+" "+ListaInventario.get(0).getImagen()+" "+ListaInventario.get(0).getKilometraje()+" "+ListaInventario.get(0).getPantTac()+" "+ListaInventario.get(0).getPlaca()+" "+ListaInventario.get(0).getPrecio()+" "+ListaInventario.get(0).getSensor()+" "+ListaInventario.get(0).getTransmision()+" "+ListaInventario.get(0).getVelmax()+" "+ListaInventario.get(0).getVidriosEl());
@@ -81,17 +83,18 @@ public void busqueda(){
                 item.getCilindraje(),
                 item.getPlaca(),
                 item.getPrecio(),
-                item.getKilometraje()
+                item.getKilometraje(),
+                item.getStatus()
             };
             modelo.addRow(rowData);
         }
         for (int i = 0; i < modelo.getRowCount(); i++) {
-            
-            modelo.setValueAt(Busqueda.indices.get(i), i, 7); // Columna 7 (índice 6)
-        }
-        
 
-}
+            modelo.setValueAt(Busqueda.indices.get(i), i, 8); // Columna 7 (índice 6)
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,6 +104,8 @@ public void busqueda(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Filtro_Vendidos = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
         ficha_jp = new javax.swing.JButton();
         eliminar_jp = new javax.swing.JButton();
         agregar_jp = new javax.swing.JButton();
@@ -114,6 +119,25 @@ public void busqueda(){
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Filtro_Vendidos.setForeground(new java.awt.Color(255, 255, 255));
+        Filtro_Vendidos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Filtro_VendidosItemStateChanged(evt);
+            }
+        });
+        Filtro_Vendidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Filtro_VendidosActionPerformed(evt);
+            }
+        });
+        add(Filtro_Vendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 125, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Mostrar Autos Vendidos");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 125, -1, -1));
+
+        ficha_jp.setBackground(new java.awt.Color(27, 46, 62));
         ficha_jp.setBorder(null);
         ficha_jp.setContentAreaFilled(false);
         ficha_jp.addActionListener(new java.awt.event.ActionListener() {
@@ -121,8 +145,11 @@ public void busqueda(){
                 ficha_jpActionPerformed(evt);
             }
         });
-        add(ficha_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 660, 180, 50));
+        add(ficha_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 662, 186, 50));
 
+        eliminar_jp.setBackground(new java.awt.Color(27, 46, 62));
+        eliminar_jp.setForeground(new java.awt.Color(27, 46, 62));
+        eliminar_jp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/Elementos/Eliminar_Boton.png"))); // NOI18N
         eliminar_jp.setBorder(null);
         eliminar_jp.setContentAreaFilled(false);
         eliminar_jp.addActionListener(new java.awt.event.ActionListener() {
@@ -130,8 +157,10 @@ public void busqueda(){
                 eliminar_jpActionPerformed(evt);
             }
         });
-        add(eliminar_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 660, 180, 50));
+        add(eliminar_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(927, 662, 184, 50));
 
+        agregar_jp.setBackground(new java.awt.Color(27, 46, 62));
+        agregar_jp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/Elementos/Agregar_Boton.png"))); // NOI18N
         agregar_jp.setBorder(null);
         agregar_jp.setContentAreaFilled(false);
         agregar_jp.addActionListener(new java.awt.event.ActionListener() {
@@ -139,8 +168,10 @@ public void busqueda(){
                 agregar_jpActionPerformed(evt);
             }
         });
-        add(agregar_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, 190, 50));
+        add(agregar_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 662, 190, 50));
 
+        editar_jp.setBackground(new java.awt.Color(27, 46, 62));
+        editar_jp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/Elementos/Editar_Boton.png"))); // NOI18N
         editar_jp.setBorder(null);
         editar_jp.setContentAreaFilled(false);
         editar_jp.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +179,7 @@ public void busqueda(){
                 editar_jpActionPerformed(evt);
             }
         });
-        add(editar_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 660, 190, 50));
+        add(editar_jp, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 662, 190, 50));
 
         BarraBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         BarraBusqueda.setBorder(null);
@@ -169,14 +200,14 @@ public void busqueda(){
 
             },
             new String [] {
-                "Marca", "Modelo", "F.Fabricacion", "Cilindraje", "Placa", "Precio", "Kilometraje", "#"
+                "Marca", "Modelo", "F.Fabricacion", "Cilindraje", "Placa", "Precio", "Kilometraje", "¿Vendido?", "#"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -214,66 +245,97 @@ public void busqueda(){
 
     private void agregar_jpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_jpActionPerformed
 
-        Main.ShowPanel("Agregar_inv");
+        if (Filtro_Vendidos.isSelected() == false) {
+            Main.ShowPanel("Agregar_inv");
+        }
 
     }//GEN-LAST:event_agregar_jpActionPerformed
 
     private void ficha_jpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha_jpActionPerformed
         int fila = TablaInv.getSelectedRow();
         
-   if(fila==-1){
-                   JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.INFORMATION_MESSAGE);
-                   
-   }else{        
-       int elemento=(int)(TablaInv.getValueAt(fila, 7));
-        Main.ShowPanel("VerFicha_inv");
-        Main.verficha_inv.Inicializar(ListaInventario.get(elemento).getMarca(), ListaInventario.get(elemento).getModelo(), ListaInventario.get(elemento).getF_fabricacion(), ListaInventario.get(elemento).getPlaca(), ListaInventario.get(elemento).getTransmision(), ListaInventario.get(elemento).getCombustible(), ListaInventario.get(elemento).getCilindraje(), ListaInventario.get(elemento).getAbs(), ListaInventario.get(elemento).getSensor(), ListaInventario.get(elemento).getAireA(), ListaInventario.get(elemento).getVidriosEl(), ListaInventario.get(elemento).getPantTac(), ListaInventario.get(elemento).getDireccion(), ListaInventario.get(elemento).getEspEle(), ListaInventario.get(elemento).getVelmax(), ListaInventario.get(elemento).getKilometraje(),ListaInventario.get(elemento).getImagen(), ListaInventario.get(elemento).getPrecio());
-   
-   }
         
-        
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            int elemento = (int) (TablaInv.getValueAt(fila, 8));
+            indice=elemento;
+            Main.ShowPanel("VerFicha_inv");
+            Main.verficha_inv.Inicializar(ListaInventario.get(elemento).getMarca(), ListaInventario.get(elemento).getModelo(), ListaInventario.get(elemento).getF_fabricacion(), ListaInventario.get(elemento).getPlaca(), ListaInventario.get(elemento).getTransmision(), ListaInventario.get(elemento).getCombustible(), ListaInventario.get(elemento).getCilindraje(), ListaInventario.get(elemento).getAbs(), ListaInventario.get(elemento).getSensor(), ListaInventario.get(elemento).getAireA(), ListaInventario.get(elemento).getVidriosEl(), ListaInventario.get(elemento).getPantTac(), ListaInventario.get(elemento).getDireccion(), ListaInventario.get(elemento).getEspEle(), ListaInventario.get(elemento).getVelmax(), ListaInventario.get(elemento).getKilometraje(), ListaInventario.get(elemento).getImagen(), ListaInventario.get(elemento).getPrecio());
+
+        }
+
+
     }//GEN-LAST:event_ficha_jpActionPerformed
 
     private void editar_jpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_jpActionPerformed
-        int fila = TablaInv.getSelectedRow();
-        
-   if(fila==-1){
-                   JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.INFORMATION_MESSAGE);
-   
-   }else{
-int elemento=(int) TablaInv.getValueAt(fila, 7);
-               Main.ShowPanel("Editar_inv");
-        Main.editar_inv.Inicializar(elemento,ListaInventario,ListaInventario.get(elemento).getMarca(), ListaInventario.get(elemento).getModelo(), ListaInventario.get(elemento).getF_fabricacion(), ListaInventario.get(elemento).getPlaca(), ListaInventario.get(elemento).getTransmision(), ListaInventario.get(elemento).getCombustible(), ListaInventario.get(elemento).getCilindraje(), ListaInventario.get(elemento).getAbs(), ListaInventario.get(elemento).getSensor(), ListaInventario.get(elemento).getAireA(), ListaInventario.get(elemento).getVidriosEl(), ListaInventario.get(elemento).getPantTac(), ListaInventario.get(elemento).getDireccion(), ListaInventario.get(elemento).getEspEle(), ListaInventario.get(elemento).getVelmax(), ListaInventario.get(elemento).getKilometraje(),ListaInventario.get(elemento).getImagen(), ListaInventario.get(elemento).getPrecio());
-             
-   }
+
+        if (Filtro_Vendidos.isSelected() == false) {
+
+            int fila = TablaInv.getSelectedRow();
+
+            if (fila == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                int elemento = (int) TablaInv.getValueAt(fila, 8);
+                Main.ShowPanel("Editar_inv");
+                Main.editar_inv.Inicializar(elemento, ListaInventario, ListaInventario.get(elemento).getMarca(), ListaInventario.get(elemento).getModelo(), ListaInventario.get(elemento).getF_fabricacion(), ListaInventario.get(elemento).getPlaca(), ListaInventario.get(elemento).getTransmision(), ListaInventario.get(elemento).getCombustible(), ListaInventario.get(elemento).getCilindraje(), ListaInventario.get(elemento).getAbs(), ListaInventario.get(elemento).getSensor(), ListaInventario.get(elemento).getAireA(), ListaInventario.get(elemento).getVidriosEl(), ListaInventario.get(elemento).getPantTac(), ListaInventario.get(elemento).getDireccion(), ListaInventario.get(elemento).getEspEle(), ListaInventario.get(elemento).getVelmax(), ListaInventario.get(elemento).getKilometraje(), ListaInventario.get(elemento).getImagen(), ListaInventario.get(elemento).getPrecio());
+
+            }
+        }
     }//GEN-LAST:event_editar_jpActionPerformed
 
     private void eliminar_jpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_jpActionPerformed
-                int fila = TablaInv.getSelectedRow();
-   if(fila==-1){
-                   JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.INFORMATION_MESSAGE);
-   
-   }else{   
-int elemento=(int) TablaInv.getValueAt(fila, 7);
-Main.ShowPanel("Eliminar_inv");
-        Main.eliminar_inv.Inicializar(elemento,ListaInventario,ListaInventario.get(elemento).getMarca(), ListaInventario.get(elemento).getModelo(), ListaInventario.get(elemento).getF_fabricacion(), ListaInventario.get(elemento).getPlaca(), ListaInventario.get(elemento).getTransmision(), ListaInventario.get(elemento).getCombustible(), ListaInventario.get(elemento).getCilindraje(), ListaInventario.get(elemento).getAbs(), ListaInventario.get(elemento).getSensor(), ListaInventario.get(elemento).getAireA(), ListaInventario.get(elemento).getVidriosEl(), ListaInventario.get(elemento).getPantTac(), ListaInventario.get(elemento).getDireccion(), ListaInventario.get(elemento).getEspEle(), ListaInventario.get(elemento).getVelmax(), ListaInventario.get(elemento).getKilometraje(),ListaInventario.get(elemento).getImagen(), ListaInventario.get(elemento).getPrecio());
-      
-   }
+
+        if (Filtro_Vendidos.isSelected() == false) {
+            int fila = TablaInv.getSelectedRow();
+            if (fila == -1) {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                int elemento = (int) TablaInv.getValueAt(fila, 8);
+                Main.ShowPanel("Eliminar_inv");
+                Main.eliminar_inv.Inicializar(elemento, ListaInventario, ListaInventario.get(elemento).getMarca(), ListaInventario.get(elemento).getModelo(), ListaInventario.get(elemento).getF_fabricacion(), ListaInventario.get(elemento).getPlaca(), ListaInventario.get(elemento).getTransmision(), ListaInventario.get(elemento).getCombustible(), ListaInventario.get(elemento).getCilindraje(), ListaInventario.get(elemento).getAbs(), ListaInventario.get(elemento).getSensor(), ListaInventario.get(elemento).getAireA(), ListaInventario.get(elemento).getVidriosEl(), ListaInventario.get(elemento).getPantTac(), ListaInventario.get(elemento).getDireccion(), ListaInventario.get(elemento).getEspEle(), ListaInventario.get(elemento).getVelmax(), ListaInventario.get(elemento).getKilometraje(), ListaInventario.get(elemento).getImagen(), ListaInventario.get(elemento).getPrecio());
+
+            }
+        }
     }//GEN-LAST:event_eliminar_jpActionPerformed
 
     private void BarraBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BarraBusquedaKeyReleased
-busqueda();
-        
+        busqueda();
+
     }//GEN-LAST:event_BarraBusquedaKeyReleased
 
     private void Filtro_jpItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Filtro_jpItemStateChanged
-      busqueda();
+        busqueda();
     }//GEN-LAST:event_Filtro_jpItemStateChanged
+
+    private void Filtro_VendidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Filtro_VendidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Filtro_VendidosActionPerformed
+
+    private void Filtro_VendidosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Filtro_VendidosItemStateChanged
+if(Filtro_Vendidos.isSelected()){
+            editar_jp.setVisible(false);
+        eliminar_jp.setVisible(false);
+        agregar_jp.setVisible(false);
+
+        busqueda();
+}else{
+        editar_jp.setVisible(true);
+        eliminar_jp.setVisible(true);
+        agregar_jp.setVisible(true);
+busqueda();
+}
+    }//GEN-LAST:event_Filtro_VendidosItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JTextField BarraBusqueda;
-    private javax.swing.JComboBox<String> Filtro_jp;
+    private static javax.swing.JRadioButton Filtro_Vendidos;
+    private static javax.swing.JComboBox<String> Filtro_jp;
     private static javax.swing.JTable TablaInv;
     private javax.swing.JButton agregar_jp;
     private javax.swing.JButton editar_jp;
@@ -281,6 +343,7 @@ busqueda();
     private javax.swing.JButton ficha_jp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

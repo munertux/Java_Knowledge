@@ -1,1 +1,6 @@
-Ford	Mustang 1969	1969	HGP081	Manual	Gasolina	5L	Si	Si	Si	Si	Si	Si	Si	300	100.000	Ford_Mustang.png	160.000.000
+Ford	Mustang 1969	1969	HGP081	Manual	Gasolina	5L	Si	Si	Si	Si	Si	Si	Si	300	100.000	Ford_Mustang.png	160.000.000	No	null	null	null	null	null	null
+Ford	Mustang 1969	1969	HGP081	Manual	Gasolina	5L	Si	Si	Si	Si	Si	Si	Si	300	100.000	Ford_Mustang.png	160.000.000	Si	Thomas Leonardo	3413845903	Castillo Castro	Email@gmail.com	Bogotá D.C.	2043386857
+Mazda	3	2024	HOI082	Manual	Gasolina	2L	Si	Si	Si	Si	Si	Si	Si	260	0	Mazda3.png	117.500.000	No	null	null	null	null	null	null
+Mazda	MX-5	2024	ZAH294	Manual	Gasolina	2L	Si	Si	Si	Si	Si	Si	Si	214	0	mx-5-vehiculos.png	182'300.000	No	null	null	null	null	null	null
+Ford	Mustang GT	2024	OPU907	Manual	Gasolina	5L	Si	Si	Si	Si	Si	Si	Si	280	0	Mustang_New.png	249'990.000	No	null	null	null	null	null	null
+Ford	11	11	11	11	11	11	Si	Si	Si	Si	Si	Si	Si	11	11	Mustang_New.png	11	Si	11	11	11	11	11	11

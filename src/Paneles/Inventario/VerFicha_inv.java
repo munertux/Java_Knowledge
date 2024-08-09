@@ -2,6 +2,7 @@ package Paneles.Inventario;
 
 import Concesionario.Main;
 import Operaciones.Crud_txt;
+import Operaciones.Gestion_inv;
 import Tipografias.Fuentes;
 import java.awt.Image;
 import java.io.File;
@@ -96,6 +97,12 @@ public class VerFicha_inv extends javax.swing.JPanel {
         CilindrajeT_jp.setText(cilindraje);
         TransmisionT_jp.setText(transmision);
         SetImage(Imagen_jp, ("src/Imagenes/" + Imagen));
+        if((Gestion_inv.ListaInventario.get(Gestion_inv.indice).getStatus()).equals("Si")){
+            System.out.println((Gestion_inv.ListaInventario.get(Gestion_inv.indice).getStatus()).equals("Si"));
+            BotonCom.setVisible(true);
+        }else{
+            BotonCom.setVisible(false);
+        }
     }
 
     private void SetImage(JLabel Imagen_jp, String root) {
@@ -111,6 +118,7 @@ public class VerFicha_inv extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BotonCom = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         Marca_jp = new javax.swing.JLabel();
         Imagen_jp = new javax.swing.JLabel();
@@ -138,6 +146,16 @@ public class VerFicha_inv extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BotonCom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/Elementos/Info_Boton.png"))); // NOI18N
+        BotonCom.setBorder(null);
+        BotonCom.setContentAreaFilled(false);
+        BotonCom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonComActionPerformed(evt);
+            }
+        });
+        add(BotonCom, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 480, 187, 66));
 
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
@@ -231,10 +249,16 @@ public class VerFicha_inv extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void BotonComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonComActionPerformed
+        DatosCom_inv.Inicializar();    
+        Main.ShowPanel("DatosCom_inv");
+    }//GEN-LAST:event_BotonComActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JLabel Abs_jp;
     private static javax.swing.JLabel AireA_jp;
+    private javax.swing.JButton BotonCom;
     private static javax.swing.JLabel CilindrajeT_jp;
     private static javax.swing.JLabel Cilindraje_jp;
     private static javax.swing.JLabel Combustible_jp;

@@ -4,10 +4,66 @@ package Info;
 
 public class Inventario {
     
-    String marca,modelo,f_fabricacion,placa,transmision,combustible,cilindraje,abs,sensor,AireA,vidriosEl,PantTac,direccion,EspEle,velmax,kilometraje,Imagen,precio;
+    String marca,modelo,f_fabricacion,placa,transmision,combustible,cilindraje,abs,sensor,AireA,vidriosEl,PantTac,direccion,EspEle,velmax,kilometraje,Imagen,precio,status;
+    String nombreCom, NumeroCom,ApellidosCom,EmailCom,CiudadCom,CedulaCom;
 
+    public String getNombreCom() {
+        return nombreCom;
+    }
 
+    public void setNombreCom(String nombreCom) {
+        this.nombreCom = nombreCom;
+    }
 
+    public String getNumeroCom() {
+        return NumeroCom;
+    }
+
+    public void setNumeroCom(String NumeroCom) {
+        this.NumeroCom = NumeroCom;
+    }
+
+    public String getApellidosCom() {
+        return ApellidosCom;
+    }
+
+    public void setApellidosCom(String ApellidosCom) {
+        this.ApellidosCom = ApellidosCom;
+    }
+
+    public String getEmailCom() {
+        return EmailCom;
+    }
+
+    public void setEmailCom(String EmailCom) {
+        this.EmailCom = EmailCom;
+    }
+
+    public String getCiudadCom() {
+        return CiudadCom;
+    }
+
+    public void setCiudadCom(String CiudadCom) {
+        this.CiudadCom = CiudadCom;
+    }
+
+    public String getCedulaCom() {
+        return CedulaCom;
+    }
+
+    public void setCedulaCom(String CedulaCom) {
+        this.CedulaCom = CedulaCom;
+    }
+
+    
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     
     public String getMarca() {
         return marca;
@@ -153,8 +209,7 @@ public class Inventario {
         this.Imagen = Imagen;
     }
 
-    public Inventario( String marca, String modelo, String f_fabricacion, String placa, String transmision, String combustible, String cilindraje, String abs, String sensor, String AireA, String vidriosEl, String PantTac, String direccion, String EspEle, String velmax, String kilometraje, String Imagen, String precio) {
-        
+    public Inventario(String marca, String modelo, String f_fabricacion, String placa, String transmision, String combustible, String cilindraje, String abs, String sensor, String AireA, String vidriosEl, String PantTac, String direccion, String EspEle, String velmax, String kilometraje, String Imagen, String precio, String status, String nombreCom, String NumeroCom, String ApellidosCom, String EmailCom, String CiudadCom, String CedulaCom) {
         this.marca = marca;
         this.modelo = modelo;
         this.f_fabricacion = f_fabricacion;
@@ -173,7 +228,15 @@ public class Inventario {
         this.kilometraje = kilometraje;
         this.Imagen = Imagen;
         this.precio = precio;
+        this.status = status;
+        this.nombreCom = nombreCom;
+        this.NumeroCom = NumeroCom;
+        this.ApellidosCom = ApellidosCom;
+        this.EmailCom = EmailCom;
+        this.CiudadCom = CiudadCom;
+        this.CedulaCom = CedulaCom;
     }
+
 
     
 

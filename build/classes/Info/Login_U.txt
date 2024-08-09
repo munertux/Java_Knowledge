@@ -1,0 +1,6 @@
+admin	admin	admin	luilly	perea	1137548974
+gerente	gerente	gerente	nombre gerente	apellido gerente	identificador
+mecanico1	mecanico1	mecanico	Alejandro	Perez	1
+mecanico2	mecanico2	mecanico	Juan	Vargas	2
+mecanico3	mecanico3	mecanico	Thomas	Castillo	3
+mecanico4	mecanico4	mecanico	Sofia	Muñoz	4

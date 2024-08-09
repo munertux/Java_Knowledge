@@ -33,7 +33,31 @@ public boolean ValidarUsuario(List<Credenciales> lista, String user, String pass
     
   
     
-private String user,password,rol;
+private String user,password,rol,nombre,apellido,identificador;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
+    }
 
     public String getUser() {
         return user;
@@ -59,11 +83,16 @@ private String user,password,rol;
         this.rol = rol;
     }
 
-    public Credenciales(String user, String password, String rol) {
+    public Credenciales(String user, String password, String rol, String nombre, String apellido, String identificador) {
         this.user = user;
         this.password = password;
         this.rol = rol;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.identificador = identificador;
     }
+
+
     public Credenciales() {
     }
 

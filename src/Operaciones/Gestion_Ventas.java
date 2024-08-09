@@ -34,9 +34,9 @@ public class Gestion_Ventas extends javax.swing.JPanel {
         VaciarTexto();
         pagina = 1;
         tipoFuente = new Fuentes();
-        Titulo1.setFont(tipoFuente.fuente(tipoFuente.Racing, 1, 40));
-        Titulo2.setFont(tipoFuente.fuente(tipoFuente.Racing, 1, 40));
-        Titulo3.setFont(tipoFuente.fuente(tipoFuente.Racing, 1, 40));
+        Titulo1.setFont(tipoFuente.fuente(tipoFuente.Racing, 1, 20));
+        Titulo2.setFont(tipoFuente.fuente(tipoFuente.Racing, 1, 20));
+        Titulo3.setFont(tipoFuente.fuente(tipoFuente.Racing, 1, 20));
         PaginaT.setFont(tipoFuente.fuente(tipoFuente.Inter, 1, 14));
         
         int tamañoFuente = 12;
@@ -63,6 +63,8 @@ public class Gestion_Ventas extends javax.swing.JPanel {
         Crud_txt lector = new Crud_txt();
         ListaInventario = lector.leer_Inventario_U();
         ListaInventario_Filtrado = ListaInventario;
+        ListaInventario_Filtrado= Busqueda.filtrar(ListaInventario, Filtro_jp.getSelectedItem().toString(), BarraBusqueda.getText(),false);
+
         ImageIcon icono;
         AnteriorB.setVisible(false);
         SiguienteB.setVisible(false);
@@ -188,7 +190,7 @@ public class Gestion_Ventas extends javax.swing.JPanel {
                 
                 break;
         }
-        
+        if(ListaInventario_Filtrado.size()!=0){
         int actual = inicio;
         
         do {
@@ -227,7 +229,7 @@ public class Gestion_Ventas extends javax.swing.JPanel {
                 
                 break;
         }
-        
+}
     }
     
     public Gestion_Ventas() {
@@ -478,7 +480,7 @@ public class Gestion_Ventas extends javax.swing.JPanel {
 
     private void BarraBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BarraBusquedaKeyReleased
         
-        ListaInventario_Filtrado = Busqueda.filtrar(ListaInventario, Filtro_jp.getSelectedItem().toString(), BarraBusqueda.getText());
+        ListaInventario_Filtrado = Busqueda.filtrar(ListaInventario, Filtro_jp.getSelectedItem().toString(), BarraBusqueda.getText(),false);
         if (ListaInventario_Filtrado.size() < 3) {
             SiguienteB.setVisible(false);
             AnteriorB.setVisible(false);
@@ -574,7 +576,7 @@ public class Gestion_Ventas extends javax.swing.JPanel {
     private static javax.swing.JLabel F_F1;
     private static javax.swing.JLabel F_F2;
     private static javax.swing.JLabel F_F3;
-    private javax.swing.JComboBox<String> Filtro_jp;
+    private static javax.swing.JComboBox<String> Filtro_jp;
     private static javax.swing.JLabel Img1;
     private static javax.swing.JLabel Img2;
     private static javax.swing.JLabel Img3;

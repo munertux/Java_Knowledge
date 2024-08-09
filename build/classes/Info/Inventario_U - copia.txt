@@ -1,0 +1,2 @@
+Ford	Mustang 1969	1969	HGP081	Manual	Gasolina	5L	Si	Si	Si	Si	Si	Si	Si	300	100.000	Ford_Mustang.png	160.000.000	No	null	null	null	null	null	null
+Ford	Mustang 1969	1969	HGP081	Manual	Gasolina	5L	Si	Si	Si	Si	Si	Si	Si	300	100.000	Ford_Mustang.png	160.000.000	Si	Thomas Leonardo	3413845903	Castillo Castro	Email@gmail.com	Bogotá D.C.	2043386857

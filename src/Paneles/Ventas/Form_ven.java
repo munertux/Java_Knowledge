@@ -104,15 +104,23 @@ public class Form_ven extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         GenerarContrato generarcontrato = new GenerarContrato("Representante de la empresa", "Bogotá D.C.", "C.C del representante", (Apellidos_T.getText() + " " + Nombres_T.getText()), Domicilio_T.getText(), Cedula_T.getText(), auto.getMarca(), auto.getModelo(), auto.getPlaca(), auto.getCilindraje(), auto.getPrecio());
         JOptionPane.showMessageDialog(null, "¡Contrato Generado!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-        Vaciar();
-        Main.ShowPanel("Gerente_Ventas");
+        
+        
         Crud_txt lector= new Crud_txt();
         
-        //Antes de borrar es necesario guardar la info en otro archivo de ventas 
-        //VerFicha_ven.ListaInventario.remove(VerFicha_ven.Auto_indice);                         
-        //lector.Editar_Inventario_U(VerFicha_ven.ListaInventario);
-
+        VerFicha_ven.ListaInventario.get(VerFicha_ven.Auto_indice).setStatus("Si");  
         
+        VerFicha_ven.ListaInventario.get(VerFicha_ven.Auto_indice).setNombreCom(Nombres_T.getText());
+        VerFicha_ven.ListaInventario.get(VerFicha_ven.Auto_indice).setNumeroCom(Celular_T.getText());  
+        VerFicha_ven.ListaInventario.get(VerFicha_ven.Auto_indice).setApellidosCom(Apellidos_T.getText());  
+        VerFicha_ven.ListaInventario.get(VerFicha_ven.Auto_indice).setEmailCom(Email_T.getText());  
+        VerFicha_ven.ListaInventario.get(VerFicha_ven.Auto_indice).setCiudadCom(Domicilio_T.getText());  
+        VerFicha_ven.ListaInventario.get(VerFicha_ven.Auto_indice).setCedulaCom(Cedula_T.getText());  
+        
+        lector.Editar_Inventario_U(VerFicha_ven.ListaInventario);
+
+        Vaciar();
+        Main.ShowPanel("Gerente_Ventas");
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

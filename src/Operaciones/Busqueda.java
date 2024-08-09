@@ -17,7 +17,7 @@ public class Busqueda {
 
     public static List<Integer> indices = new ArrayList<Integer>();
 
-    public static List<Inventario> filtrar(List<Inventario> inventarioList, String filtro, String buscar) {
+    public static List<Inventario> filtrar(List<Inventario> inventarioList, String filtro, String buscar,boolean Filtro_Vendidos) {
 
         return inventarioList.stream()
                 .filter(inventario -> {
@@ -26,7 +26,13 @@ public class Busqueda {
                         case "Marca":
                             match = inventario.getMarca().toLowerCase().contains(buscar.toLowerCase());
                             if (match == true) {
+                                if(Filtro_Vendidos && inventario.getStatus().equals("Si") ){
                                 indices.add(inventarioList.indexOf(inventario));
+                                }else if(Filtro_Vendidos==false && inventario.getStatus().equals("No")){
+                                indices.add(inventarioList.indexOf(inventario));
+                                }else{
+                                match=false;
+                                }
                             }
 
                             break;
@@ -34,7 +40,13 @@ public class Busqueda {
                             match = inventario.getModelo().toLowerCase().contains(buscar.toLowerCase());
                             inventarioList.indexOf(inventario);
                             if (match == true) {
+                                if(Filtro_Vendidos && inventario.getStatus().equals("Si") ){
                                 indices.add(inventarioList.indexOf(inventario));
+                                }else if(Filtro_Vendidos==false && inventario.getStatus().equals("No")){
+                                indices.add(inventarioList.indexOf(inventario));
+                                }else{
+                                match=false;
+                                }
                             }
                             break;
                             
@@ -43,35 +55,65 @@ public class Busqueda {
                             match = inventario.getF_fabricacion().toLowerCase().contains(buscar.toLowerCase());
                             inventarioList.indexOf(inventario);
                             if (match == true) {
+                                if(Filtro_Vendidos && inventario.getStatus().equals("Si") ){
                                 indices.add(inventarioList.indexOf(inventario));
+                                }else if(Filtro_Vendidos==false && inventario.getStatus().equals("No")){
+                                indices.add(inventarioList.indexOf(inventario));
+                                }else{
+                                match=false;
+                                }
                             }
                             break;
                         case "Cilindraje":
                             match = inventario.getCilindraje().toLowerCase().contains(buscar.toLowerCase());
                             inventarioList.indexOf(inventario);
                             if (match == true) {
+                                if(Filtro_Vendidos && inventario.getStatus().equals("Si") ){
                                 indices.add(inventarioList.indexOf(inventario));
+                                }else if(Filtro_Vendidos==false && inventario.getStatus().equals("No")){
+                                indices.add(inventarioList.indexOf(inventario));
+                                }else{
+                                match=false;
+                                }
                             }
                             break;
                         case "Placa":
                             match = inventario.getPlaca().toLowerCase().contains(buscar.toLowerCase());
                             inventarioList.indexOf(inventario);
                             if (match == true) {
+                                if(Filtro_Vendidos && inventario.getStatus().equals("Si") ){
                                 indices.add(inventarioList.indexOf(inventario));
+                                }else if(Filtro_Vendidos==false && inventario.getStatus().equals("No")){
+                                indices.add(inventarioList.indexOf(inventario));
+                                }else{
+                                match=false;
+                                }
                             }
                             break;
                         case "Precio":
                             match = inventario.getPrecio().toLowerCase().contains(buscar.toLowerCase());
                             inventarioList.indexOf(inventario);
                             if (match == true) {
+                                if(Filtro_Vendidos && inventario.getStatus().equals("Si") ){
                                 indices.add(inventarioList.indexOf(inventario));
+                                }else if(Filtro_Vendidos==false && inventario.getStatus().equals("No")){
+                                indices.add(inventarioList.indexOf(inventario));
+                                }else{
+                                match=false;
+                                }
                             }
                             break;
                         case "Kilometraje":
                             match = inventario.getKilometraje().toLowerCase().contains(buscar.toLowerCase());
                             inventarioList.indexOf(inventario);
                             if (match == true) {
+                                if(Filtro_Vendidos && inventario.getStatus().equals("Si") ){
                                 indices.add(inventarioList.indexOf(inventario));
+                                }else if(Filtro_Vendidos==false && inventario.getStatus().equals("No")){
+                                indices.add(inventarioList.indexOf(inventario));
+                                }else{
+                                match=false;
+                                }
                             }
                             break;
                     }

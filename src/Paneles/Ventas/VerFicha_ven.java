@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class VerFicha_ven extends javax.swing.JPanel {
-    static List<Inventario> ListaInventario = new ArrayList<Inventario>();
+    public static List<Inventario> ListaInventario = new ArrayList<Inventario>();
     Fuentes tipoFuente;
     static String Imagen;
     public static String Volver_Clase;
@@ -84,7 +84,7 @@ public class VerFicha_ven extends javax.swing.JPanel {
         Crud_txt lector = new Crud_txt();
         ListaInventario = lector.leer_Inventario_U();
         
-        //System.out.println(Auto_indice);        
+        System.out.println(Auto_indice);        
         
         //System.out.println(ListaInventario.get(Auto_indice).getCilindraje());
         //System.out.println(ListaInventario.indexOf(Auto));

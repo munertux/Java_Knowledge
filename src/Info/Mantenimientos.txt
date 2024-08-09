@@ -1,0 +1,3 @@
+1	Alejandro	Cambio de aceite y filtro $100,000 - 30 minutos	2024-01-01	8:00 AM	Luilly	Perea	luilly@gmail.com	3226458749	100000	30
+1	Alejandro	Revisión y cambio de frenos $150,000 - 1 hora	2024-02-01	10:00 AM	Michell	Rodriguez	michell@gmail.com	3226459784	150000	60
+1	Alejandro	Revisión y reemplazo de la batería $200,000 - 30 minutos	2024-01-01	8:30 AM					200000	30

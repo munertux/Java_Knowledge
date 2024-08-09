@@ -1,14 +1,17 @@
 package Concesionario;
 
 import MenuPanels.Menu_Gerente;
+import Operaciones.Gestion_Mantenimiento;
 import Operaciones.Gestion_Ventas;
 import Operaciones.Gestion_inv;
 import Paneles.Inventario.Agregar_inv;
+import Paneles.Inventario.DatosCom_inv;
 import Paneles.Inventario.Editar_inv;
 import Paneles.Inventario.Eliminar_inv;
 import Paneles.Inventario.VerFicha_inv;
 import Paneles.Ventas.VerFicha_ven;
 import Paneles.Login.Login;
+import Paneles.Mantenimiento.Agendar_man;
 import Paneles.Ventas.Form_ven;
 
 import Tipografias.Fuentes;
@@ -28,6 +31,9 @@ public class Main extends javax.swing.JFrame {
     public static Menu_Gerente menu_gerente = new Menu_Gerente();
     public static Gestion_Ventas gestion_ventas = new Gestion_Ventas();
     public static VerFicha_ven verficha_ven = new VerFicha_ven();
+    public static DatosCom_inv datoscom_inv = new DatosCom_inv();
+    public static Agendar_man agendar_man=new Agendar_man();
+    public static Gestion_Mantenimiento Gestion_man= new Gestion_Mantenimiento();
 public static Form_ven form_ven = new Form_ven();
 
     public static void ShowPanel(String Panel) {
@@ -40,15 +46,25 @@ public static Form_ven form_ven = new Form_ven();
             case "Gerente_inv":
                 p = gestion_inv;
                 m = menu_gerente;
-                
                 Gestion_inv.inicializar();
                 break;
+            case "Agendar_man":
+                p = agendar_man;
+                m = menu_gerente;                
+                agendar_man.Inicializar();
+                
+                break;  
             case "Gerente_Ventas":
                 p = gestion_ventas;
                 m = menu_gerente;                
                 Gestion_Ventas.inicializar();
                 
-                break;                
+                break;                  
+                                
+                case "Gestion_man":
+                p = Gestion_man;  
+                m = menu_gerente;
+                break;  
             case "Agregar_inv":
                 p = agregar_inv;  
                 m = menu_gerente;
@@ -61,7 +77,13 @@ public static Form_ven form_ven = new Form_ven();
                 verficha_ven.Volver_Clase="Ventas";
 
                 break;   
+            
+            case "DatosCom_inv":
+                m = menu_gerente;
+                p = datoscom_inv;
                 
+
+                break;                   
                 
             case "Form_ven":
                 m = menu_gerente;

@@ -135,7 +135,7 @@ public class Menu_Gerente extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         icono = new ImageIcon("src/MenuPanels/MenuImg/MenuAgendar.png");
         Menu_jp.setIcon(icono);
-
+        Main.ShowPanel("Gestion_man");
         jButton2.setVisible(true);
         jButton4.setVisible(true);
         jButton3.setVisible(false);
