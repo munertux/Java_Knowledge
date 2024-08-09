@@ -21,7 +21,7 @@ Funcionalidades del codigo:
   + Interfaz seccion de ventas:
     ![image](https://github.com/user-attachments/assets/31fa316a-0e69-450c-8a14-22d326443059)
 
-  + interfaz observar auto:
+  + interfaz observar auto de seccion de ventas:
     ![image](https://github.com/user-attachments/assets/708e811b-f099-4630-8eb2-e9c1774c900e)
 
   + Interfaz formulario de ventas:
